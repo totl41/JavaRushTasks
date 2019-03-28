@@ -1,7 +1,7 @@
 package com.javarush.task.task02.task0204;
 
 /* 
-О  семейных отношениях
+О семейных отношениях
 */
 public class Solution {
     public static void main(String[] args) {
