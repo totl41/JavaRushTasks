@@ -1,6 +1,8 @@
 package com.javarush.task.task08.task0817;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /* 
@@ -28,7 +30,21 @@ public class Solution {
 
     public static void removeTheFirstNameDuplicates(Map<String, String> map) {
         //напишите тут ваш код
-        removeItemFromMapByValue(map, "Имя_1");
+        Map<String, String> mapCopy = new HashMap<String, String>(map);
+
+        for (Map.Entry<String, String> pairCopy : mapCopy.entrySet()){
+
+            int i = 0;
+
+            if (map.containsValue(pairCopy.getValue())){
+
+                for (Map.Entry<String, String> pair : map.entrySet()){
+                    if (pair.getValue().equals(pairCopy.getValue())) i++;
+                }
+
+                if (i > 1) removeItemFromMapByValue(map, pairCopy.getValue());
+            }
+        }
     }
 
     public static void removeItemFromMapByValue(Map<String, String> map, String value) {
