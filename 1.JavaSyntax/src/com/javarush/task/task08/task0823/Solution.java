@@ -11,16 +11,18 @@ import java.io.InputStreamReader;
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String string = reader.readLine();
+        char[] charArray = reader.readLine().toCharArray();
 
         //напишите тут ваш код
-        String[] isPast = string.split(" ");
-        String past = " ";
+        boolean toUpperCase = true;
 
-        for (int i = 0; i < string.length(); i++) {
-            if (! newString.equals(" ")) newString = newString + " ";
-            newString = newString + isPast[i].substring(0, 1).toUpperCase() + isPast[i].substring(1);
+        for (int i = 0; i < charArray.length; i++) {
+            if (toUpperCase && Character.isLetter(charArray[i])) {
+                charArray[i] = Character.toUpperCase(charArray[i]);
+                toUpperCase = false;
+            }
+            else if (Character.isWhitespace(charArray[i])) toUpperCase = true;
         }
-        System.out.println(newString);
+        System.out.println(charArray);
     }
 }
