@@ -25,7 +25,6 @@ public class Solution {
         public void setName(String name) {
             this.name = name;
         }
-
     }
 
     public static class Cat extends Pet {
