@@ -10,16 +10,21 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         // напишите тут ваш код
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()));
+
         boolean isEnd = false;
         String stringData = null;
-        DataOutputStream dos = new DataOutputStream(new FileOutputStream(reader.readLine()));
 
         while (!isEnd){
             stringData = reader.readLine();
-            dos.writeUTF(stringData);
-            if (stringData == "exit") isEnd = true;
-        }
 
-        dos.close();
+            if (stringData.equals("exit")) {
+                writer.write(stringData);
+                isEnd = true;
+            }
+            else writer.write(stringData + "\r\n");
+        }
+        reader.close();
+        writer.close();
     }
 }
