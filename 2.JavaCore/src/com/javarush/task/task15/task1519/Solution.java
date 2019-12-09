@@ -9,46 +9,31 @@ import java.io.IOException;
 */
 
 public class Solution {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NumberFormatException {
         //напиште тут ваш код
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        boolean rederTrue = true;
+        while (true){
 
-        while (rederTrue){
-            String x = reader.readLine();
+            String xString = reader.readLine();
 
-            if (!x.equals("exit")){
+            if (xString.equals("exit")) break;
 
-                //1.проверяем, что в строке нет других символов, кроме цифр и точки
-                try {
-                    short y = Short.parseShort(x);
-                    if (0 < y < 128) print(x);
+            try {
+                //2.при наличии точки пытаемся преобразовать к double
+                if (xString.contains(".")) print(Double.parseDouble(xString));
+
+                //3.пытаемся преобразовать к sort
+                else if (Integer.parseInt(xString) <= 0 || Integer.parseInt(xString) >= 128) print(Integer.parseInt(xString));
+
+                //4.пытаемся преобразовать к integer
+                else if (0 < Short.parseShort(xString) && Short.parseShort(xString) < 128) print(Short.parseShort(xString));
                 }
                 catch (NumberFormatException e){
-                    try {
-                        Integer y = Integer.parseInt(x);
-                        if (y <= 0 && y >= 128) print(x);
-                    }
-                    catch (NumberFormatException e1){
-                        e1.printStackTrace();
-                    }
+                    print(xString);
                 }
-
-
-                //2.при наличии точки пытаемся преобразовать к double
-                //3.пытаемся преобразовать к sort
-                //4.пытаемся преобразовать к integer
-                //5.если не 2-4 или это 1 - это строка
-
-                if (x.matches(".")) print(x);
-                if (x.equals(".")) print(x);
-
-
-
             }
-            else rederTrue = false;
-        }
+        reader.close();
     }
 
     public static void print(Double value) {
