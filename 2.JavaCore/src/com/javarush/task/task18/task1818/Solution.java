@@ -17,7 +17,7 @@ public class Solution {
 
         reader.close();
 
-        FileOutputStream filetream1 = new FileOutputStream(name1, true);
+        FileOutputStream fileStream1 = new FileOutputStream(name1, true);
         FileInputStream fileStream2 = new FileInputStream(name2);
         FileInputStream fileStream3 = new FileInputStream(name3);
 
@@ -26,16 +26,16 @@ public class Solution {
 
         while((i = bufferedInputStream.read())!= -1){
 
-            filetream1.write((char) i);
+            fileStream1.write((char) i);
         }
 
         bufferedInputStream = new BufferedInputStream(fileStream3, 200);
         while((i = bufferedInputStream.read())!= -1){
 
-            filetream1.write((char) i);
+            fileStream1.write((char) i);
         }
 
-        filetream1.close();
+        fileStream1.close();
         fileStream2.close();
         fileStream3.close();
     }
